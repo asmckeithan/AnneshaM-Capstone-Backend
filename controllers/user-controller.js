@@ -1,7 +1,7 @@
-import Users from "../models/Users";
+const Users = require ("../models/Users");
 
 //using a asynchronous function to follow a synchronus task with parameters
- export const getAllUsers = async(request, response, next ) => {
+ const getAllUsers = async(request, response, next ) => {
     let users;
     //using a try catch block to catch any errors in the database 
     try{
@@ -15,3 +15,5 @@ import Users from "../models/Users";
     //return a message if the user is found 
     return response.status(200).json({users})
 }
+
+module.exports = {getAllUsers}

@@ -5,11 +5,11 @@ const express = require('express')
 const router = express.Router();
 
 //import function from controller file 
-import { getAllUsers } from "../controllers/user-controller"
+const { getAllUsers } = require ("../controllers/user-controller")
 
 //router request======================================================================
 
 //router to retrieve data and function 
 router.get("/", getAllUsers)
 
-export default router;
+module.exports = router;

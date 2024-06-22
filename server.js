@@ -1,5 +1,5 @@
 //importing router file user-routes to the main server file 
-import router from "./routes/user-routes"
+const router = require ("./routes/user-routes.js")
 
 //declaring an express variable to require express
 const express = require('express');
@@ -12,6 +12,7 @@ mongoose.connect(
     "mongodb+srv://asmckeithan:Q5ME2EhZba9PiA0S@firstcluster.shdprc6.mongodb.net/Capstone-Project"
 ).then(() => console.log("Connected to MongoDB using Mongoose"))
 
+
 //create the express server inside a variable called app
 const app = express()
 
@@ -22,7 +23,7 @@ const PORT = process.env.PORT || 8000;
 
 
 app.use("/api/user",router )//http://localhost:8000/api/user/logon
-    response.send("hello World")
+  
 
 
 app.listen(PORT, () => {

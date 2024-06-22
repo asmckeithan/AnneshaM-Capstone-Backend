@@ -21,6 +21,7 @@ const userSchema = new Schema({
 
     }
 })
+const User = mongoose.model("User", userSchema)
 
-export default mongoose.model("User", usserSchema)
+module.exports = User
 //mongodb will show users
