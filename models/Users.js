@@ -23,3 +23,4 @@ const userSchema = new Schema({
 })
 
 export default mongoose.model("User", usserSchema)
+//mongodb will show users

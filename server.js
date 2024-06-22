@@ -1,4 +1,5 @@
-
+//importing router file user-routes to the main server file 
+import router from "./routes/user-routes"
 
 //declaring an express variable to require express
 const express = require('express');
@@ -20,9 +21,9 @@ const PORT = process.env.PORT || 8000;
 //
 
 
-app.use("/",(request,response,next) => {
+app.use("/api/user",router )//http://localhost:8000/api/user/logon
     response.send("hello World")
-})
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${8000}`)
