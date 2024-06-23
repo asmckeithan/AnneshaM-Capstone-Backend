@@ -5,11 +5,13 @@ const express = require('express')
 const router = express.Router();
 
 //import function from controller file 
-const { getAllUsers } = require ("../controllers/user-controller")
+const {getAllUsers, signUp} = require ("../controllers/user-controller")
 
 //router request======================================================================
 
 //router to retrieve data and function 
-router.get("/", getAllUsers)
+router.get("/user", getAllUsers)
+
+router.post("/user/signup", signUp)
 
 module.exports = router;

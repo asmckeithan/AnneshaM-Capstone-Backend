@@ -16,16 +16,17 @@ mongoose.connect(
 //create the express server inside a variable called app
 const app = express()
 
-//selecting the port you would like the server to run on.(8000) 
-const PORT = process.env.PORT || 8000;
-
-//
 
 
-app.use("/api/user",router )//http://localhost:8000/api/user/logon
+//passing all of the data into the json format
+app.use(express.json());
+
+//assigning the router for json data to the below http request
+app.use("/api",router )//http://localhost:8000/api/user/logon
   
 
-
+//selecting the port you would like the server to run on.(8000) 
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Listening on port: ${8000}`)
 })

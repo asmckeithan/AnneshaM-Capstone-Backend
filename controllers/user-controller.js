@@ -15,5 +15,38 @@ const Users = require ("../models/Users");
     //return a message if the user is found 
     return response.status(200).json({users})
 }
+const signUp = async (req, res, next) => {
+    const  {name, email, password} = req.body
 
-module.exports = {getAllUsers}
+    //validation
+    let existingUser;
+    try{//find function to find the existing user using the email 
+        existingUser = await Users.findOne({email});
+
+    }catch (err){
+        return console.log(err)
+    }//using an if statement  we can send a response to show email exist 
+    if (existingUser){
+        return res.status(400).json({messgae: "User Already Exist! Login Instead"})
+    }
+    //If no user is found then we can add a new user as follows:
+    const newUser = new Users ({
+        name,
+        email,
+        password
+    })
+   //now we can save each user inputed into the database 
+     try{  await newUser.save();
+        return res.status(201).json({user: newUser})
+    }catch (err){
+        console.log("Error creating new user",err)
+        return res.stauts(500).json({message:"Server erro"})
+    }
+    
+}
+
+
+module.exports = {
+    getAllUsers,
+    signUp
+}
