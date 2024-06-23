@@ -1,12 +1,14 @@
 //importing router file user-routes to the main server file 
 const router = require ("./routes/user-routes.js")
+const blogRoutes = require("./routes/blog-routes.js");
 
 //declaring an express variable to require express
 const express = require('express');
 
 //importing mongoose
 const mongoose = require('mongoose');
-const blogRouter = require("./routes/blog-routes.js");
+
+
 
 //inserting your driver string to connect mongoose
 mongoose.connect(
@@ -26,7 +28,7 @@ app.use(express.json());
 app.use("/api",router )//http://localhost:8000/api/user/signup
  
 //assigning the blog router to the below path 
-app.use("/api/blog", blogRouter);
+app.use("/api/blog", blogRoutes);
 
 //selecting the port you would like the server to run on.(8000) 
 const PORT = process.env.PORT || 8000;

@@ -31,7 +31,7 @@ const signUp = async (req, res, next) => {
         return console.log(err)
     }//using an if statement  we can send a response to show email exist 
     if (existingUser){
-        return res.status(400).json({messgae: "User Already Exist! Login Instead"})
+        return res.status(400).json({message: "User Already Exist! Login Instead"})
     }
     //If no user is found then we can add a new user as follows:
     const newUser = new Users ({

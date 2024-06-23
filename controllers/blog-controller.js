@@ -1,18 +1,18 @@
 const Blog = require('../models/Blog')
 
 const getAllBlogs = async(request, response, next ) => {
-    let blogs;
-
     try {
-        blogs = await Blog.find();
-    }catch (err){
-       return console.log(err)
-    }//if no blogs found then we will display an error 
-    if (!blogs){
-        return response.status(404).json({message:"No post found"})
+       const  blogs = await Blog.find();
+       if (blogs.length === 0) {
+        return response.status(404).json({ message: "No Posts found" });
     }
-}
 
-module.exports = {
-    getAllBlogs
+    return response.status(200).json({ blogs });
+} catch (error) {
+    console.error("Error fetching blogs:", error);
+    return response.status(500).json({ message: "Server Error" });
 }
+};
+
+
+module.exports = { getAllBlogs };
