@@ -22,7 +22,7 @@ const app = express()
 app.use(express.json());
 
 //assigning the router for json data to the below http request
-app.use("/api",router )//http://localhost:8000/api/user/logon
+app.use("/api",router )//http://localhost:8000/api/user/signup
   
 
 //selecting the port you would like the server to run on.(8000) 
