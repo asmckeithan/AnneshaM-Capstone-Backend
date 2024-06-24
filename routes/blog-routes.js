@@ -5,12 +5,15 @@ const express = require('express')
 const blogRoutes = express.Router();
 
 //importing controller file for blogs 
-const { getAllBlogs, newBlogs } = require("../controllers/blog-controller")
+const { getAllBlogs, newBlogs, updateBlogs } = require("../controllers/blog-controller")
 
 //path we are using for all blog request and responses 
 blogRoutes.get("/", getAllBlogs);
 
 //blog post path  for all blog request 
 blogRoutes.post("/add", newBlogs)
+
+//blog update path 
+blogRoutes.put("/update/:id", updateBlogs)
 
 module.exports = blogRoutes
