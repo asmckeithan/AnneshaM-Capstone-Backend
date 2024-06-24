@@ -77,4 +77,23 @@ const findBlogs = async(req, res, next ) => {
     }
     return res.status(200).json({blog})
 }
-module.exports = { getAllBlogs, newBlogs, updateBlogs, findBlogs };
+
+//Function to delete Blogs 
+const deleteBlog = async (req, res, next) => {
+    const id = req.params.id;
+
+    let blog;
+    try{
+        blog = await Blog.findByIdAndDelete(id)
+
+    }catch (err){
+      return  console.log(err)
+      
+    }if (!blog ){
+        return res.status(400).json({message: "Unable to remove"})
+    }
+    return res.status(200).json({message: "Blog successfully removed "})
+}
+
+
+module.exports = { getAllBlogs, newBlogs, updateBlogs, findBlogs, deleteBlog };
