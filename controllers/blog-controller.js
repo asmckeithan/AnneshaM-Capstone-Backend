@@ -14,5 +14,24 @@ const getAllBlogs = async(request, response, next ) => {
 }
 };
 
+//creating a function for all posts or new blogs added to the database 
+const newBlogs = async (req, res, next ) => {
+    const {title, description, image, video, user} = req.body;
 
-module.exports = { getAllBlogs };
+    const blog = new Blog({
+        title, 
+        description, 
+        image, 
+        video, 
+        user
+    });
+    try{
+        blog.save()
+    }catch (error){
+         return console.log("Unable to post",error)
+    }
+    return res.status(200).json({blog})
+}
+
+
+module.exports = { getAllBlogs, newBlogs };
