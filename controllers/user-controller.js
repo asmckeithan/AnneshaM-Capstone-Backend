@@ -20,7 +20,7 @@ const Users = require ("../models/Users");
 
 //Creating a post request function to collect data from user side for signUp
 const signUp = async (req, res, next) => {
-    const  {name, email, password} = req.body
+    const  {username, email, password} = req.body
 
     //validation
     let existingUser;
@@ -35,16 +35,17 @@ const signUp = async (req, res, next) => {
     }
     //If no user is found then we can add a new user as follows:
     const newUser = new Users ({
-        name,
+        username,
         email,
-        password
+        password, 
+        blogs: [],
     })
    //now we can save each user inputed into the database 
      try{  await newUser.save();
         return res.status(201).json({user: newUser})
     }catch (err){
         console.log("Error creating new user",err)
-        return res.stauts(500).json({message:"Server erro"})
+        return res.status(500).json({message:"Server error"})
     }
     
 }

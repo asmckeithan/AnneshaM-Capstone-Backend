@@ -88,11 +88,11 @@ const deleteBlog = async (req, res, next) => {
 
     }catch (err){
       return  console.log(err)
-      
+
     }if (!blog ){
         return res.status(400).json({message: "Unable to remove"})
     }
-    return res.status(200).json({message: "Blog successfully removed "})
+    return res.status(200).json({message: "Posts successfully removed "})
 }
 
 
