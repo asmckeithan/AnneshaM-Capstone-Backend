@@ -1,6 +1,7 @@
 //importing router file user-routes to the main server file 
 const router = require ("./routes/user-routes.js")
 const blogRoutes = require("./routes/blog-routes.js");
+const cors = require('cors')
 
 //declaring an express variable to require express
 const express = require('express');
@@ -24,6 +25,7 @@ const app = express()
 //passing all of the data into the json format
 app.use(express.json());
 
+app.use(cors())
 //assigning the router for json data to the below http request
 app.use("/api",router )//http://localhost:8000/api/user/signup
  

@@ -17,17 +17,19 @@ const getAllBlogs = async(request, response, next ) => {
 
 //creating a function for all posts or new blogs added to the database 
 const newBlogs = async (req, res, next ) => {
-    const {title, description, image, video, user} = req.body;
-
+    const {category,title, description, image, video, user} = req.body;
+console.log(req.body)
     const blog = new Blog({
+        category,
         title, 
         description, 
         image, 
         video, 
         user
     });
+    console.log(blog)
     try{
-        blog.save()
+       await blog.save()
     }catch (error){
          return console.log("Unable to post",error)
     }
@@ -38,12 +40,13 @@ const newBlogs = async (req, res, next ) => {
 //updating blog request function 
 const updateBlogs = async (req, res, next ) => {
     const {id} = req.params;
-    const {title, description, image, video, user} = req.body;
+    const {category,title, description, image, video, user} = req.body;
     try{
 //This try catch is looking for a post by the given id, only then can it updated 
 const blog = await Blog.findByIdAndUpdate(
     id,
     {
+        category,
         title,
         description,
         image,

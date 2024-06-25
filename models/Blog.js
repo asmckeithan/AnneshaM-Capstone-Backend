@@ -6,6 +6,10 @@ const Schema = mongoose.Schema;
 
 //creating our Schema with what we want in our blog post form 
 const blogSchema = new Schema ({
+    category:{
+        type: String,
+        required:true
+    },
     title: {
         type: String, 
         required: true,
@@ -23,7 +27,8 @@ const blogSchema = new Schema ({
         required: false ,
     },
     user: {
-        type: String, 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref:"User",
         required: false,
     }
 })
